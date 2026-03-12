@@ -23,8 +23,8 @@ An advanced, animated battery card specifically designed for Electric Vehicle ch
 Place the `ev-battery-card.js` file in your Home Assistant `www` directory:
 `/config/www/ev-battery-card.js`
 
-### 2. Add Resource Reference
-Edit your resources (via SSH using `nano` or through the UI) and add:
+### 2. Register Resource
+Add the resource to your ui-lovelace.yaml or via the Resources menu in the UI:
 * **URL:** `/local/ev-battery-card.js`
 * **Type:** `JavaScript Module`
 
