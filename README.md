@@ -1,5 +1,6 @@
 # ⚡ EV Battery Charge Card for Home Assistant
-<img width="505" height="712" alt="image" src="https://github.com/user-attachments/assets/4d6ae4ad-ccbc-4595-a682-3ce6052080fe" />
+
+<img width="505" height="712" alt="EV Battery Card Preview" src="https://github.com/user-attachments/assets/4d6ae4ad-ccbc-4595-a682-3ce6052080fe" />
 
 An advanced, animated battery card specifically designed for Electric Vehicle charging visualization. It features dynamic liquid animations, rising bubbles, and a glowing "shimmer" effect to bring your dashboard to life.
 
@@ -10,8 +11,9 @@ An advanced, animated battery card specifically designed for Electric Vehicle ch
 * **Charging Effects:** Animated bubbles and a pulsing lightning icon appear during active charging.
 * **Shimmer Glow:** A modern light-shimmer effect inside the battery for a premium look.
 * **Smart States:** * 🔵 **Charging:** Blue theme with flow animations.
-  * 🟢 **Completed:** Turns green with a smooth "check-mark" (✓) animation.
+    * 🟢 **Completed:** Turns green with a smooth "check-mark" (✓) animation.
 * **Data Overlay:** Displays Amperes, Duration, and Cost directly below the battery.
+* **OCPP Integration:** Designed to work seamlessly with chargers using the OCPP protocol for current adjustment.
 
 ---
 
@@ -35,6 +37,16 @@ Restart Home Assistant to ensure the new custom card is loaded.
 
 Add a **Manual Card** to your dashboard and use this configuration:
 
+📋 Entity Mapping
+Option	Description
+energy_entity	Current energy delivered in the session (kWh).
+target_entity	Your target charge limit (input_number).
+ampere_entity	OCPP Managed: The sensor representing the current offered to the EV via the OCPP protocol.
+duration_entity	Total charging time sensor.
+cost_entity	Calculated cost of the current session.
+charge_switch	The switch that controls the charger (for ON/OFF state).
+voltage_entity	Real-time line voltage (V).
+
 ```yaml
 type: custom:ev-battery-card
 name: "Terra AC Charger"
@@ -46,12 +58,5 @@ cost_entity: sensor.charging_cost_euro
 charge_switch: switch.charger_charge_control
 voltage_entity: sensor.charger_voltage
 
-📋 Entity Mapping
-Option	Description
-energy_entity	Current energy delivered in the session (kWh).
-target_entity	Your target charge limit (input_number).
-ampere_entity	Real-time charging current (A).
-duration_entity	Total charging time sensor.
-cost_entity	Calculated cost of the current session.
-charge_switch	The switch that controls the charger (for ON/OFF state).
-voltage_entity	Line voltage (V).
+    [!TIP]
+    OCPP Control: The charging current is dynamically adjusted via the OCPP protocol directly through the charger, allowing for precise power management within Home Assistant.
