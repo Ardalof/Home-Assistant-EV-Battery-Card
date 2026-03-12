@@ -47,6 +47,9 @@ cost_entity	Calculated cost of the current session.
 charge_switch	The switch that controls the charger (for ON/OFF state).
 voltage_entity	Real-time line voltage (V).
 
+[!TIP]
+OCPP Control: The charging current is dynamically adjusted via the OCPP protocol directly through the charger, allowing for precise power management within Home Assistant.
+
 ```yaml
 type: custom:ev-battery-card
 name: "Terra AC Charger"
@@ -58,5 +61,3 @@ cost_entity: sensor.charging_cost_euro
 charge_switch: switch.charger_charge_control
 voltage_entity: sensor.charger_voltage
 
-    [!TIP]
-    OCPP Control: The charging current is dynamically adjusted via the OCPP protocol directly through the charger, allowing for precise power management within Home Assistant.
